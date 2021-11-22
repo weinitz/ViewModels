@@ -1,7 +1,7 @@
 ﻿function getAll() {
     $.get("/Ajax/GetAll", null, function (data) {
         $("#list").html(data);
-        $(".delete").click(function( event ) {
+        $(".delete").click(function (event) {
             event.preventDefault();
             const id = $(this).data("id");
             console.log(id)
