@@ -50,17 +50,6 @@ namespace ViewModels.Controllers
             return View("Index", viewModel);
         }
 
-/*
-        public IActionResult Create(PersonViewModel viewModel)
-        {
-            
-            if (!ModelState.IsValid) return View("Index", viewModel);
-            var personModels = viewModel.People.Append(viewModel.EditableItem);
-            return RedirectToAction("Index", personModels);
-
-        }
-        */
-
         public IActionResult Delete(int id)
         {
             var people = new PeopleRepository();
