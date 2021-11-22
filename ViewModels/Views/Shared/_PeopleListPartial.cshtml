@@ -11,13 +11,14 @@
         </tr>
         </thead>
         <tbody>
-        @foreach(var person in Model)
+        @foreach (var person in Model)
         {
             <tr>
                 <td>@person.Id</td>
                 <td>@person.Name</td>
-                <td><a href="#" onclick="location.href =
-                    '@Url.Action("Delete","Person", new { id=person.Id })'">Delete</a></td>
+                <td>
+                    <a class="delete" data-id="@person.Id" href="@Url.Action("Delete", "Person", new {id = person.Id})">Delete</a>
+                </td>
             </tr>
         }
         </tbody>

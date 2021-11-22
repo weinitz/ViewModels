@@ -1,8 +1,8 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/main.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/css/main.css"/>
     <link href="~/css/main.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width"/>
     <title>@ViewBag.Title</title>
@@ -20,6 +20,9 @@
                 <div class="about">
                     <a asp-controller="Person" asp-action="Index" class="navLinks">People</a>
                 </div>
+                <div class="ajax">
+                    <a asp-controller="Ajax" asp-action="Index" class="navLinks">Ajax</a>
+                </div>
             </nav>
         </header>
         <main>
@@ -30,9 +33,9 @@
         </footer>
     </div>
 </section>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", false)
 </body>
 </html>

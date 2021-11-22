@@ -1,0 +1,28 @@
+﻿<div>
+    <h2>@ViewBag.Title</h2>
+
+    <div>
+        <h2>MVC Data, AJAX</h2>
+        <div id="errorMessages"></div>
+        <input type="button" class="form-control btn btn-primary" onclick="getAll()" value="get all"/>
+
+        <div class="input-group">
+            <input id="IdInput" type="number" class="form-control" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon2">
+                        <div class="input-group-append">
+                                    <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                                        <div class="btn-group" role="group">
+                                          <button id="btnGroupVerticalDrop4" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Dropdown
+                                          </button>
+                                          <div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop4">
+                                            <a class="dropdown-item" href="#" onclick="getByID()">Details</a>
+                                            <a class="dropdown-item" href="#" onclick="deleteByID()">Delete</a>
+                                          </div>
+                                        </div>
+                                      </div>
+                        </div>
+          </div>
+    </div>
+
+    <div id="list"></div>
+</div>
