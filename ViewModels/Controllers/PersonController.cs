@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using ViewModels.Models;
@@ -13,29 +12,25 @@ namespace ViewModels.Controllers
         {
             var people = new PeopleRepository();
 
-            var listViewModel = new PersonViewModel { PeopleListView = people.Read() };
+            var listViewModel = new PersonViewModel {PeopleListView = people.Read()};
 
-            if (listViewModel.PeopleListView.Count == 0 || listViewModel.PeopleListView == null)
-            {
-                people.Seed();
-            }
+            if (listViewModel.PeopleListView.Count == 0 || listViewModel.PeopleListView == null) people.Seed();
 
             return View(listViewModel);
         }
-        
+
         [HttpPost]
         public IActionResult Index(PersonViewModel viewModel)
         {
             var people = new PeopleRepository();
             viewModel.PeopleListView.Clear();
 
-            foreach (var person in people.Read().Where(person => person.Name.Contains(viewModel.FilterString, StringComparison.OrdinalIgnoreCase)))
-            {
+            foreach (var person in people.Read().Where(person =>
+                person.Name.Contains(viewModel.FilterString, StringComparison.OrdinalIgnoreCase)))
                 viewModel.PeopleListView.Add(person);
-            }
             return View(viewModel);
         }
-        
+
         [HttpPost]
         public IActionResult Create(CreatePersonViewModel createViewModel)
         {
@@ -50,6 +45,7 @@ namespace ViewModels.Controllers
 
                 return View("Index", viewModel);
             }
+
             ViewBag.Message = "Failed to add person" + ModelState.Values;
             return View("Index", viewModel);
         }
@@ -73,7 +69,7 @@ namespace ViewModels.Controllers
 
             return RedirectToAction("Index");
         }
-        
+
         public PartialViewResult CarList()
         {
             return PartialView("_peopleListPartial");

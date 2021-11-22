@@ -4,11 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 html {
-    height:100%;
+    height: 100%;
     box-sizing: border-box;
 }
+
 body {
-    height:100%;
+    height: 100%;
     padding: 0;
     margin: 0;
     background: #383a59;
@@ -35,10 +36,12 @@ section {
     display: grid;
     grid-template-rows: auto 1fr auto;
 }
+
 header {
     display: grid;
     background: #282a36;
 }
+
 nav {
     height: 50px;
     padding: 5px;
