@@ -1,0 +1,97 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html {
+    height:100%;
+    box-sizing: border-box;
+}
+body {
+    height:100%;
+    padding: 0;
+    margin: 0;
+    background: #383a59;
+    color: #f2f2f2;
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 400;
+}
+
+a {
+    transition: all .3s linear;
+    color: #8be9fd;
+}
+
+* {
+    box-sizing: inherit;
+}
+
+section {
+    height: 100%
+}
+
+.wrapper {
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+header {
+    display: grid;
+    background: #282a36;
+}
+nav {
+    height: 50px;
+    padding: 5px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: auto;
+    grid-gap: 1em;
+    align-items: center;
+    text-align: center;
+}
+
+.start {
+    grid-column: 2;
+}
+
+.about {
+    grid-column: 3;
+}
+
+.logo {
+    grid-column: 1;
+    background-image: url("https://www.lexicon.se/Static/images/logo-lexicon_2x.gif");
+    background-position: left;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+
+.contact {
+    grid-column: 4;
+}
+
+.projects {
+    grid-column: 5;
+}
+
+.navLinks {
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 500;;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    color: #f2f2f2;
+
+}
+
+.navLinks:hover {
+    border-color: #bd93f9;
+    color: #bd93f9;
+}
+
+nav, main, footer {
+    width: 1024px;
+    justify-self: center;
+}

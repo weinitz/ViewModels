@@ -1,0 +1,25 @@
+﻿@model List<ViewModels.Models.Person>
+
+<div class="container">
+    <h2>Basic Table of People</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach(var person in Model)
+        {
+            <tr>
+                <td>@person.Id</td>
+                <td>@person.Name</td>
+                <td><a href="#" onclick="location.href =
+                    '@Url.Action("Delete","Person", new { id=person.Id })'">Delete</a></td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

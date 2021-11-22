@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/main.css" />
+    <link href="~/css/main.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width"/>
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+<section>
+    <div class="wrapper">
+        <header>
+            <nav class="container">
+                <div class="logo">
+                </div>
+                <div class="start">
+                    <a asp-controller="Home" asp-action="Index" class="navLinks">Start</a>
+                </div>
+                <div class="about">
+                    <a asp-controller="Person" asp-action="Index" class="navLinks">People</a>
+                </div>
+            </nav>
+        </header>
+        <main>
+            @RenderBody()
+        </main>
+        <footer>
+            <span>&copy; Tim Weinitz @DateTime.Now.ToString("yyyy-MM-dd")</span>
+        </footer>
+    </div>
+</section>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
