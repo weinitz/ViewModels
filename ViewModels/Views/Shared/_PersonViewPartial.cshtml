@@ -1,0 +1,10 @@
+﻿@model ViewModels.Models.Person
+<div class="row">
+    <div class="col-2">@Model.Id</div>
+    <div class="col-2">@Model.Name</div>
+    <div class="col-2">@Model.City</div>
+    <div class="col-2">@Model.PhoneNumber</div>
+    <div class="col-4">
+        <a class="delete" data-id="@Model.Id" href="@Url.Action("Delete", "Person", new {id = Model.Id})">Delete</a>
+    </div>
+</div>

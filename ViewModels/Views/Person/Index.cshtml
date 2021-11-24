@@ -37,9 +37,15 @@
         @Html.ValidationSummary()
     }
 
-
-    @{
-        <partial name="_PeopleListPartial" model="Model.PeopleListView"/>
+    <div class="row">
+        <div class="col-2">Id</div>
+        <div class="col-2">Name</div>
+        <div class="col-2">City</div>
+        <div class="col-2">Phone number</div>
+        <div class="col-4">Action</div>
+    </div>
+    @foreach (var person in Model.PeopleListView)
+    {
+        <partial name="_PersonViewPartial" model="person"/>
     }
-
 </div>
