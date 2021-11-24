@@ -5,16 +5,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Folder Include="Pages"/>
-        <Folder Include="wwwroot"/>
+        <Folder Include="wwwroot" />
     </ItemGroup>
 
     <ItemGroup>
-        <_ContentIncludedByDefault Remove="Shared\_Layout.cshtml"/>
+        <_ContentIncludedByDefault Remove="Shared\_Layout.cshtml" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="System.Data.SqlClient" Version="4.8.3"/>
+        <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
     </ItemGroup>
 
 </Project>

@@ -11,17 +11,23 @@ namespace ViewModels.Models
         public void Seed()
         {
             var people = new PeopleRepository();
-            people.Add("Tim", "Johan", "Michael", "Weinitz");
+            people.Add(
+                name: "Tim",
+                city: "Halmstad",
+                phoneNumber: "112"
+            ).Add(
+                name: "Johan",
+                city: "Laholm",
+                phoneNumber: "114114"
+            );
         }
 
-        public PeopleRepository Add(params string[] names)
+
+        public PeopleRepository Add(string name, string city, string phoneNumber)
         {
-            foreach (var name in names)
-            {
-                var person = new Person(_idCounter, name);
-                People.Add(person);
-                _idCounter++;
-            }
+            var person = new Person(id: _idCounter, name: name, city: city, phoneNumber: phoneNumber);
+            People.Add(person);
+            _idCounter++;
 
             return this;
         }

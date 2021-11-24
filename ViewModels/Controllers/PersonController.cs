@@ -40,8 +40,8 @@ namespace ViewModels.Controllers
             if (ModelState.IsValid)
             {
                 viewModel.PeopleListView = people.Read();
-                people.Add(createViewModel.Name);
-                ViewBag.Message = $"Successfully added {createViewModel.Name}!";
+                people.Add(name: createViewModel.Name, city: createViewModel.City, phoneNumber: createViewModel.PhoneNumber);
+                ViewBag.Message = $"Successfully added {createViewModel.Name} {createViewModel.City} {createViewModel.PhoneNumber}!";
 
                 return View("Index", viewModel);
             }
