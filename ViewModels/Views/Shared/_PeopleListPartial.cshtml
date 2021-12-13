@@ -4,23 +4,27 @@
     <h2>Basic Table of People</h2>
     <table class="table">
         <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Action</th>
-        </tr>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>City</th>
+                <th>Phone number</th>
+                <th>Action</th>
+            </tr>
         </thead>
         <tbody>
-        @foreach (var person in Model)
-        {
-            <tr>
-                <td>@person.Id</td>
-                <td>@person.Name</td>
-                <td>
-                    <a class="delete" data-id="@person.Id" href="@Url.Action("Delete", "Person", new {id = person.Id})">Delete</a>
-                </td>
-            </tr>
-        }
+            @foreach (var person in Model)
+            {
+                <tr>
+                    <td>@person.Id</td>
+                    <td>@person.Name</td>
+                    <td>@person.City</td>
+                    <td>@person.PhoneNumber</td>
+                    <td>
+                        <a class="delete" data-id="@person.Id" href="@Url.Action("Delete", "Person", new {id = person.Id})">Delete</a>
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
 </div>

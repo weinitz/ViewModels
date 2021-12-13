@@ -11,7 +11,7 @@
         @Html.LabelFor(model => model.FilterString)
         {
             <div class="input-group">
-                @Html.TextBoxFor(model => model.FilterString, new {@class = "form-control"})
+                @Html.TextBoxFor(model => model.FilterString, new { @class = "form-control" })
                 <div class="input-group-append">
                     <button type="submit" class="btn btn-primary">Search</button>
                 </div>
@@ -22,10 +22,14 @@
 
     @using (var form = Html.BeginForm("Create", "Person", FormMethod.Post))
     {
-        @Html.LabelFor(model => model.Name)
         @Html.HiddenFor(model => model.FilterString)
+        @Html.LabelFor(model => model.Name)
+        @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+        @Html.LabelFor(model => model.City)
+        @Html.TextBoxFor(model => model.City, new { @class = "form-control" })
+        @Html.LabelFor(model => model.PhoneNumber)
         <div class="input-group">
-            @Html.TextBoxFor(model => model.Name, new {@class = "form-control"})
+            @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control" })
             <div class="input-group-append">
                 <button type="submit" class="btn btn-success">add</button>
             </div>
@@ -35,7 +39,7 @@
 
 
     @{
-        <partial name="_PeopleListPartial" model="Model.PeopleListView"/>
+        <partial name="_PeopleListPartial" model="Model.PeopleListView" />
     }
 
 </div>

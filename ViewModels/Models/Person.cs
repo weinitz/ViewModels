@@ -4,14 +4,9 @@ namespace ViewModels.Models
 {
     public class Person
     {
-        public int Id;
-
-        [Required] public string Name;
-
-        public Person(int id, string name)
-        {
-            Id = id;
-            Name = name;
-        }
+        [Key] public int Id { get; set; }
+        [Required] public string Name { get; set; }
+        [Required] public string PhoneNumber { get; set; }
+        [Required] public string City { get; set; }
     }
 }

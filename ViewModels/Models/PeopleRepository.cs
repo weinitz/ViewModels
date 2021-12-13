@@ -1,34 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using ViewModels.DataAccess;
 
 namespace ViewModels.Models
 {
     public class PeopleRepository
     {
+        private readonly PeopleContext _context;
         private static readonly List<Person> People = new List<Person>();
         private static int _idCounter;
 
-        public void Seed()
+        public PeopleRepository(PeopleContext context)
         {
-            var people = new PeopleRepository();
-            people.Add("Tim", "Johan", "Michael", "Weinitz");
+            _context = context;
         }
 
-        public PeopleRepository Add(params string[] names)
+        public PeopleRepository Create(CreatePersonViewModel createPersonViewModel)
         {
-            foreach (var name in names)
+            var newPerson = new Person
             {
-                var person = new Person(_idCounter, name);
-                People.Add(person);
-                _idCounter++;
-            }
+                Name = createPersonViewModel.Name,
+                City = createPersonViewModel.City,
+                PhoneNumber = createPersonViewModel.PhoneNumber
+            };
+
+            _context.People.Add(newPerson);
+            _context.SaveChanges();
+            _idCounter++;
+
 
             return this;
         }
 
         public PeopleRepository Delete(Person person)
         {
-            People.Remove(person);
+            _context.People.Remove(person);
+            _context.SaveChanges();
             return this;
         }
 
@@ -41,11 +49,12 @@ namespace ViewModels.Models
 
         public List<Person> Read()
         {
-            return People;
+            return _context.People.ToList();
         }
 
         public Person GetById(int id)
         {
+            return _context.People.Find(id);
             var person = People.Find(person => person.Id.Equals(id));
             if (person == null)
                 throw new ArgumentOutOfRangeException();
