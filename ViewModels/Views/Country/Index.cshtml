@@ -1,0 +1,35 @@
+@using ViewModels.ViewModels
+@model List<ViewModels.Models.Country>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>Countries</h2>
+@{
+    var createCountryVm = new CreateCountryViewModel();
+}
+<partial name="_CreateCountryPartial" model="@createCountryVm"></partial>
+
+<table class="table table-striped">
+    <thead>
+    <th>#</th>
+    <th>Name</th>
+    </thead>
+    <tbody>
+    @foreach (var country in Model)
+    {
+        <tr>
+            <td>@country.Id</td>
+            <td>@country.Name</td>
+            <td>
+                <a class="btn btn-danger" asp-controller="Country" asp-action="Delete" asp-route-id="@country.Id">
+                    Delete
+                </a>
+            </td>
+        </tr>
+    }
+    </tbody>
+
+</table>

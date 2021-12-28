@@ -1,0 +1,37 @@
+@using ViewModels.ViewModels
+@model List<ViewModels.Models.City>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+
+<h2>Cities</h2>
+@{
+    var createViewModel = new CreateCityViewModel();
+}
+
+<partial name="_CreateCityPartial" model="@createViewModel"></partial>
+<table class="table table-striped">
+    <thead>
+    <th>#</th>
+    <th>Name</th>
+    <th>Country</th>
+    </thead>
+    <tbody>
+    @foreach (var city in Model)
+    {
+        <tr>
+            <td>@city.Id</td>
+            <td>@city.Name</td>
+            <td>@city.Country.Name</td>
+            <td>
+                <a class="btn btn-danger" asp-controller="City" asp-action="Delete" asp-route-id="@city.Id">
+                    Delete
+                </a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

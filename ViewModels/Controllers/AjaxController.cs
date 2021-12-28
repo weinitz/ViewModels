@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using ViewModels.Models;
+using ViewModels.Repositories;
 
 namespace ViewModels.Controllers
 {
@@ -16,7 +17,7 @@ namespace ViewModels.Controllers
         public IActionResult Index()
         {
             var people = _peopleRepository;
-            var listViewModel = new PersonViewModel { PeopleListView = people.Read() };
+            var listViewModel = new PersonViewModel { PeopleListView = people.GetAll() };
             //            if (listViewModel.PeopleListView.Count == 0 || listViewModel.PeopleListView == null) people.Seed();
             return View();
         }
@@ -25,7 +26,7 @@ namespace ViewModels.Controllers
         public IActionResult GetAll()
         {
             var repository = _peopleRepository;
-            var list = repository.Read();
+            var list = repository.GetAll();
             return PartialView("_PeopleListPartial", list);
         }
 

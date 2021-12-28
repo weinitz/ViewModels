@@ -23,6 +23,6 @@ namespace ViewModels.Models
         [MaxLength(50)]
         [MinLength(2)]
         [Display(Name = "City")]
-        public string City { get; set; }
+        public City City { get; set; }
     }
 }

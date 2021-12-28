@@ -2,6 +2,7 @@
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using ViewModels.Models;
+using ViewModels.Repositories;
 
 namespace ViewModels.Controllers
 {
@@ -18,7 +19,7 @@ namespace ViewModels.Controllers
         public IActionResult Index()
         {
 
-            var listViewModel = new PersonViewModel { PeopleListView = _peopleRepository.Read() };
+            var listViewModel = new PersonViewModel { PeopleListView = _peopleRepository.GetAll() };
 
             return View(listViewModel);
         }
@@ -30,7 +31,7 @@ namespace ViewModels.Controllers
 
             if (ModelState.IsValid)
             {
-                viewModel.PeopleListView = _peopleRepository.Read();
+                viewModel.PeopleListView = _peopleRepository.GetAll();
                 _peopleRepository.Create(createViewModel);
                 ViewBag.Message = $"Successfully added {createViewModel.Name}!";
 

@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using Pomelo.EntityFrameworkCore.MySql.Storage;
 using ViewModels.DataAccess;
 using ViewModels.Models;
+using ViewModels.Repositories;
 
 namespace ViewModels
 {
@@ -23,13 +24,15 @@ namespace ViewModels
         public void ConfigureServices(IServiceCollection services)
         {
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<PeopleContext>(options =>
+            services.AddDbContext<ApplicationContext>(options =>
             {
                 options.UseMySql(connectionString);
             });
-
-            //            services.AddScoped<IProjectsRepository, ProjectsRepository>();
+            
             services.AddScoped<PeopleRepository, PeopleRepository>();
+            services.AddScoped<CitiesRepository, CitiesRepository>();
+            services.AddScoped<CountriesRepository, CountriesRepository>();
+            
             services.AddControllersWithViews();
             //services.AddMvc();
         }
@@ -49,6 +52,7 @@ namespace ViewModels
                     "{controller=Home}/{action=Index}/{id?}"
                 );
             });
+            Seed.PopulateDataBase(app);
         }
     }
 }
