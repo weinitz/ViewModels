@@ -1,0 +1,8 @@
+@model ViewModels.ViewModels.SearchPersonViewModel
+
+<form asp-controller="People" asp-action="Search" method="post">
+    <div class="input-group">
+        <input asp-for="Query" class="form-control" placeholder="name or city"/>
+        <button class="form-control btn btn-primary" type="submit">Search</button>
+    </div>
+</form>

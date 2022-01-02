@@ -1,0 +1,15 @@
+﻿@using ViewModels.ViewModels
+@model ViewModels.ViewModels.PeopleViewModel
+
+
+<h2>People</h2>
+@{
+    var createPersonViewModel = new CreatePersonViewModel();
+    var searchPersonViewModel = new SearchPersonViewModel();
+}
+<partial name="_SearchPersonForm" model="@searchPersonViewModel;"/>
+<partial name="_PeopleListPartial" model="@Model.People"/>
+@if (ViewBag.Cities != null && ViewBag.Cities.Count > 0)
+{
+    <partial name="_CreatePersonFormPartial" model="@createPersonViewModel;"/>
+}

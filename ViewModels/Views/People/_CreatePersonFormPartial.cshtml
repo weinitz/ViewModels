@@ -1,0 +1,27 @@
+@model ViewModels.ViewModels.CreatePersonViewModel
+
+@using (var form = Html.BeginForm("Create", "People", FormMethod.Post))
+{
+    @Html.LabelFor(model => model.Name)
+    @Html.TextBoxFor(model => model.Name, new {@class = "form-control"})
+    <div class="form-group">
+        <label asp-for="Languages"></label>
+        @{
+            var options = new SelectList(ViewBag.Languages, "Id", "Name");
+        }
+        <select class="form-control" multiple asp-for="Languages" asp-items="@options"></select>
+        <span class="alert-danger" asp-validation-for="Languages"></span>
+    </div>
+    @Html.LabelFor(model => model.CityId)
+    @Html.DropDownListFor(model => model.CityId,
+        new SelectList(ViewBag.Cities, "Id", "Name"),
+        new {@class = "form-control"})
+    @Html.LabelFor(model => model.PhoneNumber)
+    <div class="input-group">
+        @Html.TextBoxFor(model => model.PhoneNumber, new {@class = "form-control"})
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-success">add</button>
+        </div>
+    </div>
+    @Html.ValidationSummary()
+}

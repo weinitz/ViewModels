@@ -17,19 +17,19 @@ namespace ViewModels.Controllers
         public IActionResult Index()
         {
             var people = _peopleRepository;
-            var listViewModel = new PersonViewModel { PeopleListView = people.GetAll() };
+            //var listViewModel = new PersonViewModel { PeopleListView = people.GetAll() };
             //            if (listViewModel.PeopleListView.Count == 0 || listViewModel.PeopleListView == null) people.Seed();
             return View();
         }
-
+/*
         [HttpGet]
         public IActionResult GetAll()
         {
             var repository = _peopleRepository;
             var list = repository.GetAll();
             return PartialView("_PeopleListPartial", list);
-        }
-
+        }*/
+/*
         [HttpPost]
         public IActionResult FindById(int id)
         {
@@ -40,7 +40,7 @@ namespace ViewModels.Controllers
 
             return PartialView("_peopleListPartial", people);
         }
-
+*/
         [HttpPost]
         public IActionResult DeleteById(int id)
         {

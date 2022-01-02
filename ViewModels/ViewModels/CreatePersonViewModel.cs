@@ -1,6 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
-namespace ViewModels.Models
+namespace ViewModels.ViewModels
 {
     public class CreatePersonViewModel
     {
@@ -12,17 +14,13 @@ namespace ViewModels.Models
         public string Name { get; set; }
 
         [DataType(DataType.Text)]
-        [Required(ErrorMessage = "Please enter a phonenumber.")]
+        [Required(ErrorMessage = "Please enter a phone number.")]
         [MaxLength(50)]
         [MinLength(2)]
         [Display(Name = "Phone number")]
         public string PhoneNumber { get; set; }
 
-        [DataType(DataType.Text)]
-        [Required(ErrorMessage = "Please enter a city.")]
-        [MaxLength(50)]
-        [MinLength(2)]
-        [Display(Name = "City")]
-        public City City { get; set; }
+        [Required] [DisplayName("City")] public int CityId { get; set; }
+        [Required] public List<int> Languages { get; set; }
     }
 }

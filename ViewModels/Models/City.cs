@@ -10,5 +10,6 @@ namespace ViewModels.Models
         [Required] public List<Person> People { get; set; }
 
         [Required] public Country Country { get; set; }
+        public int CountryId { get; set; }
     }
 }

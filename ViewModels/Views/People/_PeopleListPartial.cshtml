@@ -1,0 +1,33 @@
+﻿@model List<ViewModels.Models.Person>
+
+<div class="container">
+    <h2>Basic Table of People</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>City</th>
+            <th>Phone number</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var person in Model)
+        {
+            <tr>
+                <td>@person.Id</td>
+                <td>
+                    <a asp-controller="People" asp-action="View" asp-route-id="@person.Id">@person.Name</a>
+                </td>
+                <td>@person.City.Name</td>
+                <td>@person.PhoneNumber</td>
+
+                <td>
+                    <a class="delete" data-id="@person.Id" href="@Url.Action("Delete", "People", new {id = person.Id})">Delete</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

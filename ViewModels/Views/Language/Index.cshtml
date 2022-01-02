@@ -1,0 +1,32 @@
+@using ViewModels.ViewModels
+@model List<ViewModels.ViewModels.LanguageViewModel>
+
+
+<h2>Languages</h2>
+
+@{
+    var createLanguageViewModel = new CreateLanguageViewModel();
+}
+<partial name="_CreateLanguagePartial" model="@createLanguageViewModel"></partial>
+
+<table class="table table-striped">
+    <thead>
+    <th>#</th>
+    <th>Name</th>
+    </thead>
+    <tbody>
+    @foreach (var language in Model)
+    {
+        <tr>
+            <td>@language.Id</td>
+            <td>@language.Name</td>
+            <td>
+                <a class="btn btn-danger" asp-controller="Language" asp-action="Delete" asp-route-id="@language.Id">
+                    Delete
+                </a>
+            </td>
+        </tr>
+    }
+    </tbody>
+
+</table>

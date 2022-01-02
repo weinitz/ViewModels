@@ -1,0 +1,22 @@
+@model ViewModels.Models.PersonViewModel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<div class="card">
+    <header class="card-header">
+        <h4>@Model.Name</h4>
+        <a class="btn btn-danger btn-danger" asp-controller="People" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+    </header>
+    <div class="card-body">
+        <dl class="card-text">
+            <dt>Phone:</dt> <dd>@Model.Phone</dd>
+            <dt>Languages</dt>
+            <dd>
+                @string.Join(", ", Model.Languages.Select(x => x.Name))
+            </dd>
+        </dl>
+    </div>
+</div>
