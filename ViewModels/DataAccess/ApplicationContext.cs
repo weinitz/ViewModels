@@ -1,9 +1,10 @@
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using ViewModels.Models;
 
 namespace ViewModels.DataAccess
 {
-    public class ApplicationContext : DbContext
+    public class ApplicationContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
         {
@@ -14,9 +15,11 @@ namespace ViewModels.DataAccess
         public DbSet<City> Cities { get; set; }
         public DbSet<Language> Languages { get; set; }
         public DbSet<PersonLanguage> PersonLanguages { get; set; }
+        public override DbSet<ApplicationUser> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<PersonLanguage>()
                 .HasKey(personLanguage => new {personLanguage.PersonId, personLanguage.LanguageId});
             modelBuilder.Entity<PersonLanguage>()

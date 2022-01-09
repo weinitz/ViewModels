@@ -3,7 +3,6 @@
 <head>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="~/css/main.css"/>
-    <link href="~/css/main.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width"/>
     <title>@ViewBag.Title</title>
 </head>
@@ -23,15 +22,19 @@
                 <div class="ajax">
                     <a asp-controller="Ajax" asp-action="Index" class="navLinks">Ajax</a>
                 </div>
-                <div class="cities">
-                    <a asp-controller="City" asp-action="Index" class="navLinks">Cities</a>
-                </div>
-                <div class="counties">
-                    <a asp-controller="Country" asp-action="Index" class="navLinks">Countries</a>
-                </div>
-                <div class="languages">
-                    <a asp-controller="Language" asp-action="Index" class="navLinks">Languages</a>
-                </div>
+                @if (User.IsInRole("Admin"))
+                {
+                    <div class="cities">
+                        <a asp-controller="City" asp-action="Index" class="navLinks">Cities</a>
+                    </div>
+                    <div class="counties">
+                        <a asp-controller="Country" asp-action="Index" class="navLinks">Countries</a>
+                    </div>
+                    <div class="languages">
+                        <a asp-controller="Language" asp-action="Index" class="navLinks">Languages</a>
+                    </div>
+                }
+                <partial name="_LoginPartial"/>
             </nav>
         </header>
         <main>

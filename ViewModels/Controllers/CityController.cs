@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ViewModels.Models;
 using ViewModels.Repositories;
@@ -5,6 +6,7 @@ using ViewModels.ViewModels;
 
 namespace ViewModels.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class CityController : Controller
     {
         private readonly IRepository<City, CreateCityViewModel> _citiesRepository;

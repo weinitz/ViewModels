@@ -1,4 +1,5 @@
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ViewModels.Repositories;
 using ViewModels.ViewModels;
@@ -13,7 +14,8 @@ namespace ViewModels.Controllers
         {
             _languageRepository = languageRepository;
         }
-
+        
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         [Route("/Languages/")]
         public IActionResult Index()
@@ -27,6 +29,7 @@ namespace ViewModels.Controllers
             return View(languageViewModel);
         }
 
+        [Authorize(Roles = "Admin, User")]
         [HttpPost]
         public IActionResult Create(CreateLanguageViewModel createViewModel)
         {

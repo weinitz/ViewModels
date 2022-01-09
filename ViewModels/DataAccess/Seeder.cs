@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ViewModels.Models;
 
@@ -8,6 +9,8 @@ namespace ViewModels.DataAccess
     {
         public static void Seed(ModelBuilder builder)
         {
+            builder.Entity<IdentityRole>().HasData(new IdentityRole{ Name = "User" , NormalizedName = "USER"});
+            builder.Entity<IdentityRole>().HasData(new IdentityRole{ Name = "Admin", NormalizedName = "ADMIN"});
             builder.Entity<Language>().HasData(new List<Language>
             {
                 new Language {Id = 1, Name = "Swedish"},

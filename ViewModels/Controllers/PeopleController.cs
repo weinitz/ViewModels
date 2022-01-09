@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ViewModels.Models;
 using ViewModels.Repositories;
@@ -8,6 +9,7 @@ using ViewModels.ViewModels;
 
 namespace ViewModels.Controllers
 {
+    [Authorize(Roles = "Admin, User")]
     public class PeopleController : Controller
     {
         private readonly CitiesRepository _citiesRepository;
@@ -84,6 +86,8 @@ namespace ViewModels.Controllers
             });
         }
 
+        [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
             var person = _peopleRepository.GetById(id);

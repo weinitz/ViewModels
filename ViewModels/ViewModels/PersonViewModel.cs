@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using ViewModels.ViewModels;
 
-namespace ViewModels.Models
+namespace ViewModels.ViewModels
 {
     public class PersonViewModel : CreatePersonViewModel
     {
