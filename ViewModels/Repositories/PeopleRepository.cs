@@ -18,24 +18,31 @@ namespace ViewModels.Repositories
 
         public IRepository<Person, CreatePersonViewModel> Create(CreatePersonViewModel createViewModel)
         {
-            var newPerson = new Person
-            {
-                Name = createViewModel.Name,
-                City = _context.Cities.Find(createViewModel.CityId),
-                PhoneNumber = createViewModel.PhoneNumber
-            };
+            var newPerson = Person.FromCreateViewModel(createViewModel);
 
             _context.People.Add(newPerson);
             _context.SaveChanges();
+            return AddLanguages(newPerson, createViewModel.Languages);
+        }
 
+        public Person CreateAndReturn(CreatePersonViewModel createViewModel)
+        {
+            var newPerson = Person.FromCreateViewModel(createViewModel);
+
+            _context.People.Add(newPerson);
+            _context.SaveChanges();
+            
             foreach (var languageId in createViewModel.Languages)
+            {
                 _context.PersonLanguages.Add(new PersonLanguage
                 {
                     PersonId = newPerson.Id,
                     LanguageId = languageId
                 });
+                
+            }
             _context.SaveChanges();
-            return this;
+            return GetById(newPerson.Id);
         }
 
         public IRepository<Person, CreatePersonViewModel> Delete(Person person)
@@ -53,29 +60,40 @@ namespace ViewModels.Repositories
 
         public List<Person> GetAll()
         {
-            return _context.People.Include(person => person.City).ToList();
+            return _context.People
+                .Include(person => person.PersonLanguages)
+                .ThenInclude(personLanguage => personLanguage.Language)
+                .Include(person => person.City)
+                .ThenInclude(city => city.Country)
+                .ToList();
         }
 
         public Person GetById(int id)
         {
-            var person = _context.People.Find(id);
-            return JoinLanguages(person);
+            return _context.People
+                .Include(person => person.PersonLanguages)
+                .ThenInclude(personLanguage => personLanguage.Language)
+                .Include(person => person.City)
+                .ThenInclude(city => city.Country)
+                .First(person => person.Id.Equals(id));
         }
 
         public Person GetByName(string name)
         {
-            return _context.People.AsQueryable().First(e => e.Name.Equals(name));
+            return _context.People
+                .First(person => person.Name.Equals(name));
         }
 
-        private Person JoinLanguages(Person person)
+        private IRepository<Person, CreatePersonViewModel> AddLanguages(Person person, List<int> languageIds)
         {
-            var id = person.Id;
-            var personLanguages = _context.PersonLanguages
-                .Include(personLanguage => personLanguage.Language)
-                .Where(thePerson => thePerson.PersonId == id);
-
-            person.PersonLanguages = personLanguages.ToList();
-            return person;
+            foreach (var languageId in languageIds)
+                _context.PersonLanguages.Add(new PersonLanguage
+                {
+                    PersonId = person.Id,
+                    LanguageId = languageId
+                });
+            _context.SaveChanges();
+            return this;
         }
     }
 }

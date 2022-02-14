@@ -1,0 +1,37 @@
+// Custom.scss
+// Option B: Include parts of Bootstrap
+
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "bootstrap/scss/functions";
+
+// 2. Include any default variable overrides here
+$body-bg:                   #fff;
+$body-color:                #212529;
+$black:                     #000;
+
+$navbar-light-color:                rgba($black, .55);
+$navbar-light-hover-color:          rgba($black, .7);
+$navbar-light-active-color:         rgba($black, .9);
+$navbar-light-disabled-color:       rgba($black, .3);
+$navbar-light-toggler-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{$navbar-light-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>");
+$navbar-light-toggler-border-color: rgba($black, .1);
+
+$navbar-light-brand-color:                $navbar-light-active-color;
+$navbar-light-brand-hover-color:          $navbar-light-active-color;
+
+// 3. Include remainder of required Bootstrap stylesheets
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+
+// 4. Include any optional Bootstrap components as you like
+@import "bootstrap/scss/root";
+@import "bootstrap/scss/reboot";
+@import "bootstrap/scss/type";
+@import "bootstrap/scss/images";
+@import "bootstrap/scss/containers";
+@import "bootstrap/scss/grid";
+
+// 5. Add additional custom code here
+//$fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
+//@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+//@import "~@fortawesome/fontawesome-free/scss/solid.scss";

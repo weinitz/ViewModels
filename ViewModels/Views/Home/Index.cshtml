@@ -1,8 +1,19 @@
-﻿@model ViewModels.ViewModels.PersonViewModel
+﻿@using React.AspNet
+@using React.RenderFunctions
+@using React.Router
+@model ViewModels.Controllers.HomeController.IndexViewModel
 
 @{
-    ViewBag.Title = "title";
     Layout = "_Layout";
-}
+    var emotionFunctions = new EmotionFunctions();
+    var styledComponentsFunctions = new StyledComponentsFunctions();
+    var reactJssFunctions = new ReactJssFunctions();
+    var helmetFunctions = new ReactHelmetFunctions();
 
-<h2>Start</h2>
+    var chainedFunctions = new ChainedRenderFunctions(emotionFunctions, styledComponentsFunctions, reactJssFunctions, helmetFunctions);
+}
+@Html.ReactRouter("Components.RootComponent", new { initialComments = Model.Comments, page = Model.Page }, renderFunctions: chainedFunctions)
+@{
+    ViewBag.ServerStyles = styledComponentsFunctions.RenderedStyles + reactJssFunctions.RenderedStyles;
+    ViewBag.HelmetTitle = helmetFunctions.RenderedHelmet?.GetValueOrDefault("title");
+}

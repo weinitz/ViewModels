@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using ViewModels.DataAccess;
+using ViewModels.ViewModels;
 
 namespace ViewModels.Models
 {
@@ -11,5 +13,14 @@ namespace ViewModels.Models
 
         [Required] public Country Country { get; set; }
         public int CountryId { get; set; }
+
+        public static City FromCreateViewModel(CreateCityViewModel createViewModel)
+        {
+            return new City
+            {
+                Name = createViewModel.Name, 
+                CountryId = createViewModel.CountryId
+            };
+        }
     }
 }

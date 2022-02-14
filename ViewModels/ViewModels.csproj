@@ -5,6 +5,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <Folder Include="ClientApp\src" />
         <Folder Include="Migrations\" />
         <Folder Include="Pages" />
         <Folder Include="wwwroot" />
@@ -12,9 +13,25 @@
 
     <ItemGroup>
         <_ContentIncludedByDefault Remove="Shared\_Layout.cshtml" />
+        <_ContentIncludedByDefault Remove="wwwroot\dist\asset-manifest.json" />
+        <_ContentIncludedByDefault Remove="wwwroot\dist\bootstrap_js.entry.js" />
+        <_ContentIncludedByDefault Remove="wwwroot\dist\bootstrap_js.entry.js.map" />
+        <_ContentIncludedByDefault Remove="wwwroot\dist\index.html" />
+        <_ContentIncludedByDefault Remove="wwwroot\dist\main.57270512.js" />
+        <_ContentIncludedByDefault Remove="wwwroot\dist\runtime.25d4f4ba.js" />
+        <_ContentIncludedByDefault Remove="wwwroot\dist\site.entry.js" />
+        <_ContentIncludedByDefault Remove="wwwroot\dist\site.entry.js.map" />
+        <_ContentIncludedByDefault Remove="wwwroot\dist\validation.entry.js" />
+        <_ContentIncludedByDefault Remove="wwwroot\dist\validation.entry.js.map" />
+        <_ContentIncludedByDefault Remove="wwwroot\dist\vendor.7a99772b.js" />
+        <_ContentIncludedByDefault Remove="wwwroot\dist\vendors-node_modules_react-select_dist_react-select_esm_js.10fc6851.js" />
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="Chakra.Core" Version="5.0.2" />
+        <PackageReference Include="JavaScriptEngineSwitcher.ChakraCore" Version="3.16.0" />
+        <PackageReference Include="JavaScriptEngineSwitcher.ChakraCore.Native.win-x64" Version="3.16.0" />
+        <PackageReference Include="JavaScriptEngineSwitcher.Extensions.MsDependencyInjection" Version="3.3.0" />
         <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.21" />
         <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.21" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.21" />
@@ -25,7 +42,13 @@
         </PackageReference>
         <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
         <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.2.7" />
+        <PackageReference Include="React.AspNet" Version="5.2.12" />
+        <PackageReference Include="React.Router" Version="5.2.12" />
         <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="ClientApp\src\js\react\App.jsx" />
     </ItemGroup>
 
 </Project>

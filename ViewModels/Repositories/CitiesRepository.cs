@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using ViewModels.DataAccess;
 using ViewModels.Models;
 using ViewModels.ViewModels;
@@ -17,9 +18,7 @@ namespace ViewModels.Repositories
 
         public IRepository<City, CreateCityViewModel> Create(CreateCityViewModel createViewModel)
         {
-            _context.Cities.Add(
-                new City {Name = createViewModel.Name, Country = _context.Countries.Find(createViewModel.CountryId)}
-            );
+            _context.Cities.Add(City.FromCreateViewModel(createViewModel));
             _context.SaveChanges();
             return this;
         }
@@ -39,7 +38,9 @@ namespace ViewModels.Repositories
 
         public List<City> GetAll()
         {
-            return _context.Cities.ToList();
+            return _context.Cities
+                .Include(city => city.Country)
+                .ToList();
         }
 
         public City GetById(int id)
